@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <title>Document</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Grocery App</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ url_for('admindashboard') }}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('view_product') }}">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('view_category') }}">Categories</a>
+                </li>
+                
+            </ul>
+        </div>
+        <div class="ml-auto">
+            <a href="{{url_for('logout')}}" class="btn btn-dark">Logout</a>
+
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="row">
+            {% for each in sun %}
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><span style="margin-right: 100px"><Strong>Category Id:</Strong></span>  <span style="margin-left:5px;">{{each['category_id']}}</span></li>
+                                <li class="list-group-item"><span style="margin-right: 25px"><Strong>Category Name:</Strong> </span> {{each['category_name']}}</li>
+                                <a class="btn btn-light" href="/cat/update/{{each['category_id']}}" role="button">Edit</a> 
+                                <a class="btn btn-dark" href="/cat/delete/{{each['category_id']}}" role="button">Remove</a>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <title>Document</title>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Grocery App</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="nav-link btn-light" href="{{ url_for('admindashboard') }}">Home</a>
+        <div class="ml-auto">
+            <a href="{{url_for('adminlogout')}}" class="btn btn-dark">Logout</a>
+
+        </div>
+    </nav>
+    <div class="justify-content-center">
+        <center><h1>Add Category</h1></center>
+    </div>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form method="post" action="/add/category">
+                    <!-- Category ID -->
+                    <div class="form-group">
+                        <label for="c_id">ID:</label>
+                        <input name="c_id" type="text" class="form-control" required>
+                    </div>
+                    
+                    <!-- Category Name -->
+                    <div class="form-group">
+                        <label for="c_name">Category Name:</label>
+                        <input name="c_name" type="text" class="form-control" required>
+                    </div>
+                    
+                    <!-- Cancel Link -->
+                    <div class="form-group">
+                        <h6><a href="/admindashboard">Cancel</a></h6>
+                    </div>
+                    
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn btn-dark">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

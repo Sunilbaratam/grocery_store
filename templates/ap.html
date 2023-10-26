@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Document</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Grocery App</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="nav-link btn-light" href="{{ url_for('admindashboard') }}">Home</a>
+    
+        <div class="ml-auto">
+            <a href="{{url_for('adminlogout')}}" class="btn btn-dark">Logout</a>
+
+        </div>
+    </nav>
+    <center><h1>Add product details</h1></center>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form method="post" action="/add/product">
+                    <!-- Product ID -->
+                    <div class="form-group">
+                        <label for="p_id">ID:</label>
+                        <input name="p_id" type="text" class="form-control" required>
+                    </div>
+
+                    <!-- Product Name -->
+                    <div class="form-group">
+                        <label for="p_name">Product Name:</label>
+                        <input name="p_name" type="text" class="form-control" required>
+                    </div>
+
+                    <!-- Manufacture Date -->
+                    <div class="form-group">
+                        <label for="p_mdate">Manufacture Date:</label>
+                        <input name="p_mdate" type="date" class="form-control" required>
+                    </div>
+
+                    <!-- Expiry Date -->
+                    <div class="form-group">
+                        <label for="p_edate">Expiry Date:</label>
+                        <input name="p_edate" type="date" class="form-control" required>
+                    </div>
+
+                    <!-- Product Cost -->
+                    <div class="form-group">
+                        <label for="p_cost">Product Cost:</label>
+                        <input name="p_cost" type="text" class="form-control" required>
+                    </div>
+
+                    <!-- Product In Stock -->
+                    <div class="form-group">
+                        <label for="p_stock">Product In Stock:</label>
+                        <input name="p_stock" type="text" class="form-control" required>
+                    </div>
+
+                    <!-- Product Category -->
+                    <div class="form-group">
+                        <label for="c_id">Product Category:</label>
+                        <select name="c_id" class="form-control" required>
+                            <option value="select">Select</option>
+                            {% for one in sun %}
+                            <option value="{{ one['c_name'] }}">{{ one['category_name'] }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <!-- Cancel Link -->
+                    <div class="form-group">
+                        <h6><a href="/admindashboard">Cancel</a></h6>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn btn-dark">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+</body>
+</html>

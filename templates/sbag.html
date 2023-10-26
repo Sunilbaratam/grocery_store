@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Document</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Grocery App</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ url_for('dashboard') }}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('ordersf') }}">Orders</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('view_cart') }}">My Cart</a>
+                </li>
+            </ul>
+        </div>
+        <div class="ml-auto">
+            <a href="{{url_for('logout')}}" class="btn btn-dark">Logout</a>
+
+        </div>
+    </nav>
+    {% if cart %}
+        <div class="container mt-5">
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Cost/kg or Cost/lit</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in cart %}
+                    <tr>
+                        <td>{{ item.pname }}</td>
+                        <td>{{ item.cost }}</td>
+                        <td>{{ item.quantity }}</td>
+                        <td>{{ item.total_price }}</td>
+                        <td><a class="nav-link" href="">Remove</a></td>
+                    </tr>
+                    {% endfor %}
+                    <tr>
+                        <th>Total bill: {{ total_amount }}</th>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="text-center">
+                <a class="btn btn-dark" href="{{ url_for('receipt') }}" role="button">Order Now</a>
+            </div>
+        </div>
+        {% else %}
+        <div class="container mt-5">
+            <div class="empty text-center">
+                Cart is empty :\<br>Grab something from the store
+                <a class="btn btn-info" href="/userhome" role="button">Go to store</a>
+            </div>
+        </div>
+    {% endif %}
+    
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <title>Document</title>
+    
+
+</head>
+<body>
+    <center><h1>GROCERY STORE</h1></center>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-body">
+                <h1>User Login</h1>
+                <a href="{{ url_for('login') }}" class="login-link">Login Page</a><br>
+                <a href="{{ url_for('register') }}" class="login-link">Register Page</a><br>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-body">
+                <h1>Admin Login</h1>
+                <a href="{{ url_for('adminlogin') }}" class="login-link">Login Page</a><br>
+                <a href="{{ url_for('adminregister') }}" class="login-link">Register Page</a><br>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

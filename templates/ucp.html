@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% for one in res %}
+        <h5 class="card-title"><center>{{one['p_name']}}</center></h5>
+     
+      <ul class="list-group list-group-flush" style="background-color: #eaec77;">
+        <li class="list-group-item"><span style="margin-right: 100px"><Strong>ID:</Strong></span>  <span style="margin-left:5px;">{{one['p_id']}}</span></li>
+        <li class="list-group-item"><span style="margin-right: 25px"><Strong>Manufacture date:</Strong> </span> {{one['p_mdate']}}</li>
+        <li class="list-group-item"><span style="margin-right: 25px"><Strong>Expiry Date:</Strong></span>     {{one['p_edate']}}</li>
+        <li class="list-group-item"><span style="margin-right: 100px"><Strong>Cost :</Strong></span>{{one['p_cost']}}</li>
+        <li class="list-group-item"><span style="margin-right: 100px"><Strong>InStock :</Strong></span>{{one['p_stock']}}</li>
+        <li> 
+          <form action='/billing' method='post'>
+          <input type="hidden" name="p_id" value="{{one['p_id']}}">
+          <label for="p_quant"><span style="margin-left:15px"><Strong>Quantity:</Strong></span></label>
+          <input type="number" name="p_quant" ><br><br>
+          <center><input class="btn btn-success" type="submit" value="Add to cart"></center><br>
+          </form>
+        </li>
+       
+      </ul>
+    {% endfor %}
+</body>
+</html>

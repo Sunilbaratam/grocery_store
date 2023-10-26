@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <title>Document</title>
+</head>
+<body>
+    <div class="position-absolute" style="top: 10px; left: 10px;">
+        <a href="/" class="btn btn-dark">Home</a>
+    </div>
+    
+    <div class="container mt-5">
+        <center><h1>Register Page</h1></center>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <!-- User Registration Form -->
+                <form method="POST" action="">
+                    {{ form.hidden_tag() }}
+                    
+                    <!-- Username Field -->
+                    <div class="form-group">
+                        <label for="{{ form.username.id }}">Username</label>
+                        {{ form.username }}
+                    </div>
+
+                    <!-- Password Field -->
+                    <div class="form-group">
+                        <label for="{{ form.password.id }}">Password</label>
+                        {{ form.password }}
+                    </div>
+                    
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn btn-dark">Register</button>
+                </form>
+                
+                <!-- Login Link -->
+                <a href="{{ url_for('login') }}">Already have an account? Login here</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

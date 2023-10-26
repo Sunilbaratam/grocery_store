@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <title>Document</title>
+</head>
+<body>
+    <div class="position-absolute" style="top: 10px; left: 10px;">
+        <a href="/" class="btn btn-dark">Home</a>
+    </div>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <!-- Flash Messages -->
+                {% with messages = get_flashed_messages(with_categories=True) %}
+                {% if messages %}
+                <div class="alert alert-dismissible alert-success">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    {% for category, message in messages %}
+                    {{ message }}
+                    {% endfor %}
+                </div>
+                {% endif %}
+                {% endwith %}
+                
+                <!-- User Login Form -->
+                <h1>Login Page for User</h1>
+                <form method="POST" action="">
+                    {{ form.hidden_tag() }}
+                    
+                    <!-- Username Field -->
+                    <div class="form-group">
+                        <label for="{{ form.username.id }}">Username</label>
+                        {{ form.username }}
+                    </div>
+
+                    <!-- Password Field -->
+                    <div class="form-group">
+                        <label for="{{ form.password.id }}">Password</label>
+                        {{ form.password }}
+                    </div>
+                    
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn btn-dark">Login</button>
+                </form>
+                
+                <!-- Sign Up Link -->
+                <a href="{{ url_for('register') }}">New to Page? Sign Up</a>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
